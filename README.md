@@ -1,23 +1,16 @@
 # CMake Project Template
 
-This repository is a CMake project template to jump start assembly 
-of new C++ repositories.
+A general CMake project template useful to start C++ libraries and projects. Also intended as a jumping off point to experiment with various features of CMake.
 
-### Prerequisites
+### Features
 
-List prerequisites to use the project, such as environment or 
-tooling dependencies.
-
-### How to build
-
-Include instructions for how to build including related scripts and commands. Intermediate and output files from builds 
-are placed in the `build` directory, and build products should be installed to the `install` directory.
+- Cmake List file to demonstrate a project with build outputs consiting of a static library, a shared library, and an executable which links with one of the former
+- Support for Linux (Unix Make) and OSX (Unix Make and XCode)
+- External project support (In progress)
+- Testing (GTest) and 3rd party (Hunter) suppport (To be added)
 
 ### How to use
 
-Instructions of how to use the project can include, for example, instructions to
-run.
+`build_linux.sh` is provided for Linux builds and has been tested on Ubuntu 14.04.
 
-### Running tests
-
-Include steps to run tests.
+`build_osx.sh` and `build_osx_xcode.sh` are provided for OSX builds and have been tested on Sierra.
