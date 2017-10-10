@@ -1,10 +1,4 @@
-cmake_minimum_required(VERSION 3.9)
-
-include("cmake/HunterGate.cmake")
-HunterGate(
-    URL "https://github.com/ruslo/hunter/archive/v0.19.23.tar.gz"
-    SHA1 "a9e131540f2d057e53374ffc10c62c19a8df5ff8"
-)
+cmake_minimum_required(VERSION 2.8)
 
 project(project_template)
 
@@ -18,10 +12,8 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 message(STATUS "C++11 support has been enabled by default.")
 
-#include hunter package
-
-include(cmake/ExternalModules.cmake)
-ExternalModules("git@github.com:j-thomsen/example-module.git" "tags/v0.1.0" "example")
+#include(cmake/ExternalModules.cmake)
+#ExternalModules("git@github.com:j-thomsen/example-module.git" "tags/v0.1.0" "example")
 
 #build libraries
 include_directories(src)
@@ -34,16 +26,11 @@ add_library( ${SHARED_LIB_NAME} SHARED
   src/example.cpp
 )
 
-add_dependencies(${SHARED_LIB_NAME} external_module_example)
-#target_link_libraries( ${SHARED_LIB_NAME} /usr/local/lib/libexample.a)
-message("johndebug root")
-message("${CMAKE_AR}")
-message("${CMAKE_RANLIB}")
-target_link_libraries( ${SHARED_LIB_NAME} example)
+#add_dependencies(${SHARED_LIB_NAME} external_module_example)
 
 #build demo app
-#add_executable(example_demo src/main.cpp)
-#target_link_libraries(example_demo ${STATIC_LIB_NAME})
+add_executable(example_demo src/main.cpp)
+target_link_libraries(example_demo ${STATIC_LIB_NAME})
 
 #set up library flags
 foreach(library ${STATIC_LIB_NAME} ${SHARED_LIB_NAME} )
